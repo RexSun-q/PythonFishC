@@ -17,13 +17,21 @@ while True:
 
     if instr == 1:
         name = input('请输入联系人姓名：')
-        print(contact[name])
+        try:
+            print(contact[name])
+        except:
+            print('联系人不存在')
 
     if instr == 2:
         name = input('请输入新建联系人姓名：')
-        number = input('请输入联系人电话号码：')
-        temp = {name:int(number)}
-        contact.update(temp)
+        try:
+            contact[name]
+            print('联系人已存在')
+            print(name+':'+contact[name])
+            if input('是否要更改该联系人信息:(yes/no):')=='yes':
+                contact[name] = input('请输入联系人电话号码：')
+        except:
+            contact[name] = input('请输入联系人电话号码：')
 
     if instr == 3:
         name = input('请输入联系人姓名：')
