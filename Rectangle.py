@@ -1,7 +1,16 @@
 class Rectangle():
-    width = 1
-    height = 3
+    
+    def __init__(self,width=0,height=0):
+        self.width = width
+        self.height = height
 
+    def __setattr__(self,name,value):
+        if name == 'square':
+            self.width = self.height = value
+        else:
+            super().__setattr__(name,value)
+         
+        
     def setRect(self,width,height):
         self.width =width
         self.height = height
